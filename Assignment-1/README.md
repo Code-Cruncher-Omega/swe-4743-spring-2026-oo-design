@@ -12,7 +12,7 @@ implementations. This is also where polymorphism and dynamic dispatch come into 
 and CPU's as objects that implement the player interface. This is so each concrete implementation of players can utilized properly 
 according to their own unique design all without guessing if their features exist or not, as well as using the same method names and 
 using common features. Encapsulation is demonstrated through the packages used for each branch of the project, with the main root of 
-the project package being edu.kennesaw.crazy8s. The differen branches of encapsulation for this program include cardDeck, cards, 
+the project package being edu.kennesaw.crazy8s. The different branches of encapsulation for this program include cardDeck, cards, 
 domain, game, and player as their own isolated bubbles.
 ## 2. How to Run the Application (Console)
 1.) Clone the Assignment-1 fold from this repository.<br/>
