@@ -6,20 +6,16 @@ import edu.kennesaw.teashop.domain.inventory.StarRating;
 import java.util.ArrayList;
 
 public class MaxStarRatingFilterDecorator extends InventoryQueryDecoratorBase {
-    private final StarRating STAR_RATING;
+    private final StarRating MAX_STAR_RATING;
 
     public MaxStarRatingFilterDecorator(InventoryQuery inner, int max) {
         super(inner);
-        STAR_RATING = new StarRating(max);
+        MAX_STAR_RATING = new StarRating(max);
     }
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        for(int i = 0 ; i < query.size() ; i++) {
-            while(query.get(i).getRating() > STAR_RATING.getRATING()) {
-                query.remove(i);
-            }
-        }
+        query = new ArrayList<>(query.stream().filter(t -> t.getRating() < MAX_STAR_RATING.getRATING()).toList());
         return query;
     }
 }

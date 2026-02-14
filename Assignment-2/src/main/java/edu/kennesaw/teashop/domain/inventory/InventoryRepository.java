@@ -22,22 +22,6 @@ public class InventoryRepository {
 
     public InventoryRepository() {}
 
-    public ArrayList<InventoryItem> getItems() {
-        ArrayList<InventoryItem> items = new ArrayList<>();
-        for(InventoryItem item : ITEMS) {
-            items.add(item);
-        }
-        return items;
-    }
-
-    public ArrayList<UUID> getIDs() {
-        ArrayList<UUID> ids = new ArrayList<>();
-        for(InventoryItem item : ITEMS) {
-            ids.add(item.getID());
-        }
-        return ids;
-    }
-
     public boolean purchase(UUID id, int quantity) {
         for(InventoryItem item : ITEMS) {
             if(item.getID().equals(id)) {
@@ -48,6 +32,15 @@ public class InventoryRepository {
         return false;   // Failed - item not found
     }
 
+    public int getQuantity(UUID id) {
+        for(InventoryItem item : ITEMS) {
+            if(item.getID().equals(id)) {
+                return item.getQuantity();
+            }
+        }
+        return -1;
+    }
+
     public double getPrice(UUID id) {
         for(InventoryItem item : ITEMS) {
             if(item.getID().equals(id)) {
@@ -55,5 +48,17 @@ public class InventoryRepository {
             }
         }
         return -0.0;
+    }
+
+    public ArrayList<UUID> getIDs() {
+        ArrayList<UUID> ids = new ArrayList<>();
+        for(InventoryItem item : ITEMS) {
+            ids.add(item.getID());
+        }
+        return ids;
+    }
+
+    public ArrayList<InventoryItem> getItems() {
+        return new ArrayList<>(ITEMS);
     }
 }

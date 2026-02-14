@@ -11,11 +11,7 @@ public class AvailabilityFilterDecorator extends InventoryQueryDecoratorBase {
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        for(int i = 0 ; i < query.size() ; i++) {
-            while(query.get(i).getQuantity() < 1) {
-                query.remove(i);
-            }
-        }
+        query = new ArrayList<>(query.stream().filter(t -> t.getQuantity() > 0).toList());
         return query;
     }
 }

@@ -1,10 +1,11 @@
 package edu.kennesaw.teashop.domain.payment;
 
 public abstract class PaymentStrategyBase implements PaymentStrategy {
-    private final String PROMPT;
+    protected final double amount;
 
-
-    protected PaymentStrategyBase(String prompt) {
-        PROMPT = prompt;
+    protected PaymentStrategyBase(double amount) {
+        this.amount = amount;
     }
+
+    public abstract void pay();
 }
