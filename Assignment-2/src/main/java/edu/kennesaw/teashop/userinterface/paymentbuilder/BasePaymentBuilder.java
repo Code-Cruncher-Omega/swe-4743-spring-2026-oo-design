@@ -11,10 +11,10 @@ public abstract class BasePaymentBuilder implements PaymentBuilder {
     protected PrintStream console;
     protected final double AMOUNT;
 
-    public BasePaymentBuilder(InputStream input, PrintStream output, double price) {
+    public BasePaymentBuilder(InputStream input, PrintStream output, double amount) {
         scan = new Scanner(input);
         console = output;
-        this.AMOUNT = price;
+        this.AMOUNT = amount;
     }
 
     public abstract PaymentStrategy process();

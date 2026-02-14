@@ -29,7 +29,7 @@ public class InventoryRepository {
                 return true;    // Successful
             }
         }
-        return false;   // Failed - item not found
+        return false;   // Failed - Item not found
     }
 
     public int getQuantity(UUID id) {
