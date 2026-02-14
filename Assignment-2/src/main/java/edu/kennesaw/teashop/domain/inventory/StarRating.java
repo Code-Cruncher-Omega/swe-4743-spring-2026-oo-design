@@ -3,13 +3,13 @@ package edu.kennesaw.teashop.domain.inventory;
 public class StarRating {
     private final int RATING;
 
-    public StarRating(int rating) {
-        if(rating < 1) {
-            RATING = 0;
-        } else if (rating > 4) {
+    public StarRating(int stars) {
+        if(stars < 1) {
+            RATING = 1;
+        } else if (stars > 5) {
             RATING = 5;
         } else {
-            RATING = rating;
+            RATING = stars;
         }
     }
 
