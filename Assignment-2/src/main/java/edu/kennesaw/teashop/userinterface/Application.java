@@ -67,6 +67,9 @@ public class Application {
                     continue;
                 }
                 purchasing = query.get(itemNumber - 1);
+                if(purchasing.getQuantity() < 1) {
+                    console.println("Error - Pick an item that is in stock");
+                }
                 break;
             }
             int quantityBought = 0;
