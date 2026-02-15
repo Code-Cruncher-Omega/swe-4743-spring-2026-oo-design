@@ -30,11 +30,7 @@ public class InventoryQueryOutput {
         if(!contains.isEmpty()) {
             settingsApplied += "- Filter: Contains \"" + contains + "\"\n";
         }
-        if(availability.charAt(0) == 'y') {
-            settingsApplied += "- Filter: Availability = In Stock (Quantity > 0)\n";
-        } else {
-            settingsApplied += "- Filter: Availability = Ignored (Quantity >= 0)\n";
-        }
+        settingsApplied += "- Filter: Availability = " + ((availability.charAt(0)== 'y') ? "In Stock (Quantity > 0)" : "Ignored (Quantity >= 0)") + "\n";
         settingsApplied += "- Filter: Price between $" + minimum + " and $" + maximum + "\n";
         settingsApplied += "- Filter: Star rating between " + minimumStars + " and " + maximumStars + "\n";
         settingsApplied += "- Sort: Price (" + ((priceSort.charAt(0) == 'a') ? "Ascending" : "Descending") + ")\n";

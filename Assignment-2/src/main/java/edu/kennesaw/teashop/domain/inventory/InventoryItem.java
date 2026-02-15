@@ -21,11 +21,11 @@ public class InventoryItem {
         return ID;
     }
 
-    public String getNAME() {
+    public String getName() {
         return NAME;
     }
 
-    public double getPRICE() {
+    public double getPrice() {
         return PRICE;
     }
 
@@ -38,6 +38,6 @@ public class InventoryItem {
     }
 
     public int getRating() {
-        return STAR_RATING.getRATING();
+        return STAR_RATING.getCount();
     }
 }

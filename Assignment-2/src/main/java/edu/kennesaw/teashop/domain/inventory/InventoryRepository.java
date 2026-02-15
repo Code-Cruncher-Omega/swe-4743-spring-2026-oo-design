@@ -20,8 +20,6 @@ public class InventoryRepository {
             new InventoryItem(UUID.randomUUID(), "Darjeeling", 21.60, 18, new StarRating(5))
     );
 
-    public InventoryRepository() {}
-
     public boolean purchase(UUID id, int quantity) {
         for(InventoryItem item : ITEMS) {
             if(item.getID().equals(id)) {
@@ -32,30 +30,8 @@ public class InventoryRepository {
         return false;   // Failed - Item not found
     }
 
-    public int getQuantity(UUID id) {
-        for(InventoryItem item : ITEMS) {
-            if(item.getID().equals(id)) {
-                return item.getQuantity();
-            }
-        }
-        return -1;
-    }
-
-    public double getPrice(UUID id) {
-        for(InventoryItem item : ITEMS) {
-            if(item.getID().equals(id)) {
-                return item.getPRICE();
-            }
-        }
-        return -0.0;
-    }
-
-    public ArrayList<UUID> getIDs() {
-        ArrayList<UUID> ids = new ArrayList<>();
-        for(InventoryItem item : ITEMS) {
-            ids.add(item.getID());
-        }
-        return ids;
+    public InventoryItem getItem(int index) {
+        return ITEMS.get(index);
     }
 
     public ArrayList<InventoryItem> getItems() {

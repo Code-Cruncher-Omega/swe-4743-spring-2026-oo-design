@@ -14,7 +14,7 @@ public class MaxPriceFilterDecorator extends InventoryQueryDecoratorBase {
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        query = new ArrayList<>(query.stream().filter(t -> t.getPRICE() < MAX).toList());
+        query = new ArrayList<>(query.stream().filter(t -> t.getPrice() < MAX).toList());
         return query;
     }
 }

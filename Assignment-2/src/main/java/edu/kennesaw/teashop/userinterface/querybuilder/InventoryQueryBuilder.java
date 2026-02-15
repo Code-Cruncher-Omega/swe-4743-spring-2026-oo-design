@@ -21,11 +21,11 @@ public class InventoryQueryBuilder {
     private PrintStream console;
     private Scanner scan;
 
-    public InventoryQueryBuilder(InventoryRepository invRepo, PrintStream output, InputStream input) {
+    public InventoryQueryBuilder(InventoryRepository invRepo, InputStream input, PrintStream output) {
         repo = invRepo;
         reset();
-        console = output;
         scan = new Scanner(input);
+        console = output;
     }
 
     public InventoryQuery getQuery() {

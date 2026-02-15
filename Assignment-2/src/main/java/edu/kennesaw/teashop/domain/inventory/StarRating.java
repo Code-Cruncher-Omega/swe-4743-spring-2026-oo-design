@@ -1,19 +1,19 @@
 package edu.kennesaw.teashop.domain.inventory;
 
 public class StarRating {
-    private final int RATING;
+    private final int COUNT;
 
-    public StarRating(int stars) {
-        if(stars < 1) {
-            RATING = 1;
-        } else if (stars > 5) {
-            RATING = 5;
+    public StarRating(int count) {
+        if(count < 1) {
+            COUNT = 1;
+        } else if (count > 5) {
+            COUNT = 5;
         } else {
-            RATING = stars;
+            COUNT = count;
         }
     }
 
-    public int getRATING() {
-        return RATING;
+    public int getCount() {
+        return COUNT;
     }
 }

@@ -15,7 +15,7 @@ public class SortByPriceDecorator extends InventoryQueryDecoratorBase {
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        query = new ArrayList<>(query.stream().sorted(Comparator.comparing(InventoryItem::getPRICE)).toList());
+        query = new ArrayList<>(query.stream().sorted(Comparator.comparing(InventoryItem::getPrice)).toList());
         if(DESCENDING) {
             query = new ArrayList<>(query.reversed());
         }

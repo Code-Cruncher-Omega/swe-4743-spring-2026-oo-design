@@ -15,7 +15,7 @@ public class MinStarRatingFilterDecorator extends InventoryQueryDecoratorBase {
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        query = new ArrayList<>(query.stream().filter(t -> t.getRating() > MIN_STAR_RATING.getRATING()).toList());
+        query = new ArrayList<>(query.stream().filter(t -> t.getRating() > MIN_STAR_RATING.getCount()).toList());
         return query;
     }
 }

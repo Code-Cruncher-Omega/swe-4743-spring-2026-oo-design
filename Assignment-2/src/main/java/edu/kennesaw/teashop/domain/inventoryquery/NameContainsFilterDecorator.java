@@ -14,7 +14,7 @@ public class NameContainsFilterDecorator extends InventoryQueryDecoratorBase {
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        query = new ArrayList<>(query.stream().filter(t -> t.getNAME().contains(TEXT)).toList());
+        query = new ArrayList<>(query.stream().filter(t -> t.getName().contains(TEXT)).toList());
         return query;
     }
 }
