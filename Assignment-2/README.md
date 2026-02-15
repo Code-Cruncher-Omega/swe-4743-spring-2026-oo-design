@@ -22,7 +22,7 @@ In order to run the application through Docker, make sure it is installed and se
 #### 1.) Build the Docker Image <br/>
 `docker build -t teashop-java` <br/>
 #### 2.) Run the Docker Container <br/>
-Run with `-t` flag so you can interact with the app: <br/>
+Run with `-it` flag so you can interact with the app: <br/>
 `docker run -it --rm teashop-java` <br/>
 ## Screenshot
 ![Tea Shop Screenshot](screenshot.png)
