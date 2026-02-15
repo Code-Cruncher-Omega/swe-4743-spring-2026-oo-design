@@ -7,6 +7,10 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 public class CryptoCurrencyPaymentBuilder extends BasePaymentBuilder {
+    public CryptoCurrencyPaymentBuilder(String name) {
+        super(name);
+    }
+
     public CryptoCurrencyPaymentBuilder(InputStream input, PrintStream output, double amount) {
         super(input, output, amount);
     }
@@ -40,6 +44,6 @@ public class CryptoCurrencyPaymentBuilder extends BasePaymentBuilder {
             }
             break;
         }
-        return new CryptoCurrencyStrategy(AMOUNT, senderWallet, recipientWallet, walletKey);
+        return new CryptoCurrencyStrategy(amount, senderWallet, recipientWallet, walletKey);
     }
 }

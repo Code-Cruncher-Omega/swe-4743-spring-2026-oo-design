@@ -30,10 +30,6 @@ public class InventoryRepository {
         return false;   // Failed - Item not found
     }
 
-    public InventoryItem getItem(int index) {
-        return ITEMS.get(index);
-    }
-
     public ArrayList<InventoryItem> getItems() {
         return new ArrayList<>(ITEMS);
     }

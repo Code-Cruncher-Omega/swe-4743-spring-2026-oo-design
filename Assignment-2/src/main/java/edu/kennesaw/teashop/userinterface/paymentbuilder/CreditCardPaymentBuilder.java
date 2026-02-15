@@ -7,6 +7,10 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 public class CreditCardPaymentBuilder extends BasePaymentBuilder {
+    public CreditCardPaymentBuilder(String name) {
+        super(name);
+    }
+
     public CreditCardPaymentBuilder(InputStream input, PrintStream output, double amount) {
         super(input, output, amount);
     }
@@ -27,7 +31,7 @@ public class CreditCardPaymentBuilder extends BasePaymentBuilder {
                 console.println();
                 continue;
             }
-            return new CreditCardStrategy(AMOUNT, text);
+            return new CreditCardStrategy(amount, text);
         }
     }
 }

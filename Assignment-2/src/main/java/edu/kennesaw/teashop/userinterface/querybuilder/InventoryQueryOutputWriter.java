@@ -21,16 +21,15 @@ public class InventoryQueryOutputWriter {
     public ArrayList<InventoryItem> write() {
         console.println("Complete the prompts to search our selection of fine teas.");
         console.println();
-        console.println("Applied Filters and Sorts:");
         console.println(queryOut.filterAndSort());
         ArrayList<InventoryItem> query = queryBuilder.getQuery().run();
         console.println(query.size() + " items matches your query:");
         for (int i = 0; i < query.size(); i++) {
             InventoryItem item = query.get(i);
-            console.print(i + ". " + item.getName());
+            console.print("  " + (i + 1) + ". " + item.getName());
             console.print("\t\t$" + item.getPrice());
-            console.print("\t" + ((item.getQuantity() > 1) ? "Qty: " + item.getQuantity() : "(OUT OF STOCK)"));
-            console.print("\t" + item.getRating() + " stars");
+            console.print("\t\t" + ((item.getQuantity() > 0) ? "Qty: " + item.getQuantity() : "(OUT OF STOCK)"));
+            console.print("\t\t" + item.getRating() + " stars");
             console.println();
         }
         return query;

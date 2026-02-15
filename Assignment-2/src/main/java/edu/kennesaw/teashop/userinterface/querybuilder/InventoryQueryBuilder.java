@@ -34,7 +34,7 @@ public class InventoryQueryBuilder {
 
     public String containsTextFilter() {
         String contains;
-        console.print("* Tea name contains (leave blank for all names: ");
+        console.print("* Tea name contains (leave blank for all names): ");
         contains = scan.nextLine();
         if(!contains.isEmpty()) {
             query = new NameContainsFilterDecorator(query, contains);
@@ -46,19 +46,19 @@ public class InventoryQueryBuilder {
         String availability;
         while(true) {
             console.print("* Is available? (Y/N, default " + AVAILABILITY + "): ");
-            availability = scan.nextLine();
+            availability = scan.nextLine().toLowerCase();
             if(availability.length() > 1) {
                 console.println("Error - Enter only one character");
                 console.println();
                 continue;
             }
             if(availability.isEmpty()) {
-                availability = AVAILABILITY;
+                availability = AVAILABILITY.toLowerCase();
             }
-            if(availability.toLowerCase().charAt(0) == 'n') {
+            if(availability.charAt(0) == 'n') {
                 return availability;
             }
-            if(availability.toLowerCase().charAt(0) == 'y') {
+            if(availability.charAt(0) == 'y') {
                 query = new AvailabilityFilterDecorator(query);
                 return availability;
             }
@@ -74,7 +74,7 @@ public class InventoryQueryBuilder {
             double temp;
             if(minimum.isEmpty()) {
                 query = new MinPriceFilterDecorator(query, MINIMUM);
-                return minimum;
+                return MINIMUM + "";
             }
             try {
                 temp = Double.parseDouble(minimum);
@@ -96,7 +96,7 @@ public class InventoryQueryBuilder {
             double temp;
             if(maximum.isEmpty()) {
                 query = new MaxPriceFilterDecorator(query, MAXIMUM);
-                return maximum;
+                return MAXIMUM + "";
             }
             try {
                 temp = Double.parseDouble(maximum);
@@ -113,12 +113,12 @@ public class InventoryQueryBuilder {
     public String minimumStarsFilter() {
         String minimumStars;
         while(true) {
-            console.print("* Star rating maximum (1-5, default " + MINIMUM_STARS + "): ");
+            console.print("* Star rating minimum (1-5, default " + MINIMUM_STARS + "): ");
             minimumStars = scan.nextLine();
             int temp;
             if(minimumStars.isEmpty()) {
                 query = new MinStarRatingFilterDecorator(query, MINIMUM_STARS);
-                return minimumStars;
+                return MINIMUM_STARS + "";
             }
             try {
                 temp = Integer.parseInt(minimumStars);
@@ -140,7 +140,7 @@ public class InventoryQueryBuilder {
             int temp;
             if(maximumStars.isEmpty()) {
                 query = new MaxStarRatingFilterDecorator(query, MAXIMUM_STARS);
-                return maximumStars;
+                return MAXIMUM_STARS + "";
             }
             try {
                 temp = Integer.parseInt(maximumStars);
@@ -157,21 +157,24 @@ public class InventoryQueryBuilder {
     public String priceSort() {
         String priceAscending;
         while(true) {
-            console.print("* Sort by Price (A/D, default " + PRICE_SORT + "): ");
-            priceAscending = scan.nextLine();
+            console.print("* Sort by Price (A/D, N for no sort, default " + PRICE_SORT + "): ");
+            priceAscending = scan.nextLine().toLowerCase();
             if(priceAscending.length() > 1) {
                 console.println("Error - Enter only one character");
                 console.println();
                 continue;
             }
             if(priceAscending.isEmpty()) {
-                priceAscending = PRICE_SORT;
+                priceAscending = PRICE_SORT.toLowerCase();
             }
-            if(priceAscending.toLowerCase().charAt(0) == 'a') {
+            if(priceAscending.charAt(0) == 'n') {
+                return priceAscending;
+            }
+            if(priceAscending.charAt(0) == 'a') {
                 query = new SortByPriceDecorator(query, false);
                 return priceAscending;
             }
-            if(priceAscending.toLowerCase().charAt(0) == 'd') {
+            if(priceAscending.charAt(0) == 'd') {
                 query = new SortByPriceDecorator(query, true);
                 return priceAscending;
             }
@@ -182,21 +185,24 @@ public class InventoryQueryBuilder {
     public String starsSort() {
         String starsAscending;
         while(true) {
-            console.print("* Sort by Star rating (A/D, default " + STARS_SORT + "): ");
-            starsAscending = scan.nextLine();
+            console.print("* Sort by Star rating (A/D, N for no sort, default " + STARS_SORT + "): ");
+            starsAscending = scan.nextLine().toLowerCase();
             if(starsAscending.length() > 1) {
                 console.println("Error - Enter only one character");
                 console.println();
                 continue;
             }
             if(starsAscending.isEmpty()) {
-                starsAscending = STARS_SORT;
+                starsAscending = STARS_SORT.toLowerCase();
             }
-            if(starsAscending.toLowerCase().charAt(0) == 'a') {
+            if(starsAscending.charAt(0) == 'n') {
+                return starsAscending;
+            }
+            if(starsAscending.charAt(0) == 'a') {
                 query = new SortByStarRatingDecorator(query, false);
                 return starsAscending;
             }
-            if(starsAscending.toLowerCase().charAt(0) == 'd') {
+            if(starsAscending.charAt(0) == 'd') {
                 query = new SortByStarRatingDecorator(query, true);
                 return starsAscending;
             }

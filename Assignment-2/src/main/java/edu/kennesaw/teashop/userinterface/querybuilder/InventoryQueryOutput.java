@@ -8,7 +8,7 @@ public class InventoryQueryOutput {
     }
 
     public String filterAndSort() {
-        String settingsApplied = "";
+
 
         /*
         FILTERS
@@ -27,14 +27,19 @@ public class InventoryQueryOutput {
         String priceSort = inventoryQueryBuilder.priceSort();
         String starsSort = inventoryQueryBuilder.starsSort();
 
+        String settingsApplied = "\nApplied Filters and Sorts:\n";
         if(!contains.isEmpty()) {
             settingsApplied += "- Filter: Contains \"" + contains + "\"\n";
         }
-        settingsApplied += "- Filter: Availability = " + ((availability.charAt(0)== 'y') ? "In Stock (Quantity > 0)" : "Ignored (Quantity >= 0)") + "\n";
+        settingsApplied += "- Filter: Availability = " + ((availability.charAt(0) == 'y') ? "In Stock (Quantity > 0)" : "Ignored (Quantity >= 0)") + "\n";
         settingsApplied += "- Filter: Price between $" + minimum + " and $" + maximum + "\n";
         settingsApplied += "- Filter: Star rating between " + minimumStars + " and " + maximumStars + "\n";
-        settingsApplied += "- Sort: Price (" + ((priceSort.charAt(0) == 'a') ? "Ascending" : "Descending") + ")\n";
-        settingsApplied += "- Sort: Star rating (" + ((starsSort.charAt(0) == 'a') ? "Ascending" : "Descending") + ")\n";
+        if(priceSort.charAt(0) != 'n') {
+            settingsApplied += "- Sort: Price (" + ((priceSort.charAt(0) == 'a') ? "Ascending" : "Descending") + ")\n";
+        }
+        if(priceSort.charAt(0) != 'n') {
+            settingsApplied += "- Sort: Star rating (" + ((starsSort.charAt(0) == 'a') ? "Ascending" : "Descending") + ")\n";
+        }
 
         return settingsApplied;
     }

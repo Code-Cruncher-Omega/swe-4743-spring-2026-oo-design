@@ -14,7 +14,7 @@ public class MinPriceFilterDecorator extends InventoryQueryDecoratorBase {
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        query = new ArrayList<>(query.stream().filter(t -> t.getPrice() > MIN).toList());
+        query = new ArrayList<>(query.stream().filter(t -> t.getPrice() >= MIN).toList());
         return query;
     }
 }

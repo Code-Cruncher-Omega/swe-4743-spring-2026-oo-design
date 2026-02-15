@@ -15,7 +15,7 @@ public class MaxStarRatingFilterDecorator extends InventoryQueryDecoratorBase {
 
     public ArrayList<InventoryItem> run() {
         query = INNER.run();
-        query = new ArrayList<>(query.stream().filter(t -> t.getRating() < MAX_STAR_RATING.getCount()).toList());
+        query = new ArrayList<>(query.stream().filter(t -> t.getRating() <= MAX_STAR_RATING.getCount()).toList());
         return query;
     }
 }
